@@ -10,6 +10,31 @@
 #    n = 10
 
 import numpy as np
+import matplotlib.pyplot as plt
+
+
+
+# Muestra un gráfico de bastones para una función de masa
+# entradas: conjunto de valores de X, conjunto de valores de fmp(X)
+# salidas: Muestra el gráfico respecto a la información dada
+
+def grafico_pmf(n, pmf):
+    ns = []
+    for i in range(n):
+        print(i)
+        ns += [i]
+
+    ns += [n]
+    x = ns
+    y = pmf
+    fig, ax = plt.subplots()
+    ax.stem(x,y)
+    plt.title('Gráfica de la función de masa de probabilidad')
+    plt.xlabel('Éxitos')
+    plt.ylabel('Probabilidad en 10 ensayos')
+    plt.show()
+
+
 
 def moneda_truco():
     # parámetros de la distribución
@@ -38,5 +63,7 @@ def moneda_truco():
     # PMF:
     print("PMF de la distribución binomial para la moneda truco con n={}, p={}: \n{}".format(n, p, pmf))
     print(pmf)
+
+    grafico_pmf(n, pmf)
 
 moneda_truco()

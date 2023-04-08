@@ -9,9 +9,32 @@
 #    éxito = obtener corona
 
 import numpy as np
+import matplotlib.pyplot as plt
+
+
 
 # probabilidad de éxito (Obtener corona)
 p = 0.5
+
+# Muestra un gráfico de bastones para una función de masa
+# entradas: conjunto de valores de X, conjunto de valores de fmp(X)
+# salidas: Muestra el gráfico respecto a la información dada
+
+def grafico_pmf(n, pmf):
+    ns = []
+    for i in range(n):
+        ns += [i]
+
+    ns += [n]
+    x = ns
+    y = pmf
+    fig, ax = plt.subplots()
+    ax.stem(x,y)
+    plt.title('Gráfica de la función de masa de probabilidad')
+    plt.xlabel('Ensayo')
+    plt.ylabel('Probabilidad de éxito')
+    plt.show()
+
 
 
 def moneda_ideal():
@@ -38,9 +61,13 @@ def moneda_ideal():
     # Normaliza las ocurrencias para obtener la funcion masa probablidad
     pmf = ocurrencias / len(samples)
 
+    
     # PMF:
     print("PMF de la distribución binomial para la moneda truco con n={}, p={}: \n{}".format(n, p, pmf))
     print(pmf)
+
+    grafico_pmf(n, pmf)
+
 
 
 moneda_ideal()
